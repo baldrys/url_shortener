@@ -10,6 +10,10 @@ class URLRedirectView(View):
     def get(self, request, shortcode=None, *args, **kwargs):
         obj = get_object_or_404(ShortURL, shortcode=shortcode)
         redirect_url = obj.url
+
+        obj.clicked_times+= 1
+        obj.save()
+
         if not (redirect_url.startswith('http://') or redirect_url.startswith('https://')):
             redirect_url = 'http://' + redirect_url
         return HttpResponseRedirect(redirect_url)
@@ -19,7 +23,7 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         form = SubmitForm()
         context = {
-            "title": "Submit URL",
+            "title": "ShortURL",
             "form": form
         }
         return render(request, "home.html", context)
