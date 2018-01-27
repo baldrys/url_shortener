@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 # Create your models here.
 from shortener.utils import create_shortcode
-
+from shortener.validators import validate_url
 # Пытаемся импортировать из настроек максимальную длину укороченного юрл
 # если не удалось, то используем значение по умолчанию
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
@@ -19,8 +19,9 @@ class ShortURLManager(models.Manager):
             new_codes+=1
         return "New codes made: {0}".format(new_codes)
 
+# валидатор url в модели, что бы из админки нельзя было сохранить невалидный url
 class ShortURL(models.Model):
-    url = models.CharField(max_length=220)
+    url = models.CharField(max_length=220, validators=[validate_url])
     shortcode = models.CharField(max_length=SHORTCODE_MAX, unique=True, blank=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     clicked_times = models.IntegerField(default=0)
