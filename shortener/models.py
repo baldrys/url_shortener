@@ -8,17 +8,7 @@ from shortener.validators import validate_url
 # если не удалось, то используем значение по умолчанию
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
 
-class ShortURLManager(models.Manager):
 
-    def refresh_shortcodes(self):
-        qs = ShortURL.objects.filter(id__gte=1)
-        new_codes = 0
-        for q in qs:
-            q.shortcode = create_shortcode(q)
-            print(q.shortcode)
-            q.save()
-            new_codes+=1
-        return "New codes made: {0}".format(new_codes)
 
 # валидатор url в модели, что бы из админки нельзя было сохранить невалидный url
 class ShortURL(models.Model):
@@ -28,7 +18,6 @@ class ShortURL(models.Model):
     clicked_times = models.IntegerField(default=0)
     # is_automatically_generated = models.BooleanField(default=True)
 
-    objects = ShortURLManager()
 
     def __str__(self):
         return str(self.url)
@@ -37,6 +26,8 @@ class ShortURL(models.Model):
         return str(self.url)
 
     def save(self, *args, **kwargs):
+
+        # print('FALG: ', kwargs.get('flag'))
         if self.shortcode is None or self.shortcode == '':
             self.shortcode = create_shortcode(self)
         super(ShortURL, self).save(*args, **kwargs)

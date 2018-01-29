@@ -38,15 +38,25 @@ class HomeView(View):
         if form.is_valid():
             print(form.cleaned_data)
             new_url = form.cleaned_data.get("url")
-            obj, created = ShortURL.objects.get_or_create(url = new_url)
+            shortcode = form.cleaned_data.get("short_url")
+            if shortcode != '' and shortcode is not None:
+                obj = ShortURL(url=new_url, shortcode=shortcode)
+                obj.save()
+                created = True
+            else:
+                obj = ShortURL.objects.create(url = new_url)
+                # obj, created = ShortURL.objects.get_or_create(url = new_url)
+            # kwargs = {'flag': True}
+            # obj.save(kwargs)
             context = {
                 "object": obj,
-                "created": created,
+                # "created": created,
             }
-            if created:
-                template = "success.html"
-            else:
-                template = "already-exists.html"
+            # if created:
+            #     template = "success.html"
+            # else:
+            #     template = "already-exists.html"
+            template = "success.html"
 
 
         return render(request, template, context)
