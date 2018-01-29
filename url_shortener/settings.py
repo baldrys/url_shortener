@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'shortener',
-
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -125,4 +125,3 @@ STATIC_URL = '/static/'
 
 SHORTCODE_MIN = 6
 SHORTCODE_MAX = 15
-
