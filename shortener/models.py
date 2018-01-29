@@ -7,7 +7,9 @@ from shortener.validators import validate_url
 # Пытаемся импортировать из настроек максимальную длину укороченного юрл
 # если не удалось, то используем значение по умолчанию
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
+import logging
 
+logger = logging.getLogger(__name__)
 
 
 # валидатор url в модели, что бы из админки нельзя было сохранить невалидный url
@@ -30,6 +32,7 @@ class ShortURL(models.Model):
         # print('FALG: ', kwargs.get('flag'))
         if self.shortcode is None or self.shortcode == '':
             self.shortcode = create_shortcode(self)
+        logger.info("Created ShortURL record with URL:{0} and shortcode:{1}!".format(self.url, self.shortcode))
         super(ShortURL, self).save(*args, **kwargs)
 
     def get_short_url(self):

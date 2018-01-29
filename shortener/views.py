@@ -6,8 +6,10 @@ from django.http import HttpResponseRedirect
 from .models import ShortURL
 from .forms import SubmitForm
 
+
 class URLRedirectView(View):
     def get(self, request, shortcode=None, *args, **kwargs):
+
         obj = get_object_or_404(ShortURL, shortcode=shortcode)
         redirect_url = obj.url
 
@@ -48,6 +50,7 @@ class HomeView(View):
                 # obj, created = ShortURL.objects.get_or_create(url = new_url)
             # kwargs = {'flag': True}
             # obj.save(kwargs)
+
             context = {
                 "object": obj,
                 # "created": created,

@@ -125,3 +125,27 @@ STATIC_URL = '/static/'
 
 SHORTCODE_MIN = 6
 SHORTCODE_MAX = 15
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'output.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            # 'propagate': True,
+        },
+        'shortener': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            # 'propagate': True,
+        },
+    },
+}
