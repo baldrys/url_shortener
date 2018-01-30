@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'shortener',
     'rest_framework',
+    'whitenoise',
 ]
 
 MIDDLEWARE = [
@@ -53,9 +54,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE_CLASSES = (
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-)
+MIDDLEWARE_CLASSES = [
+  # 'django.middleware.security.SecurityMiddleware',
+  'whitenoise.middleware.WhiteNoiseMiddleware',
+  # ...
+]
 
 ROOT_URLCONF = 'url_shortener.urls'
 
