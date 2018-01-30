@@ -17,10 +17,17 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from shortener.views import URLRedirectView, HomeView
+from url_shortener.settings import STATIC_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^(?P<shortcode>[\w-]+)/$', URLRedirectView.as_view(), name="scode"),
     url(r'^$', HomeView.as_view()),
     url(r'^api/', include('shortener.api.urls')),
+]
+
+urlpatterns += [
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': STATIC_ROOT,
+    }),
 ]
