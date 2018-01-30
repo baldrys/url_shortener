@@ -18,7 +18,8 @@ def validate_url(url):
         url_validator(url)
         r = requests.head(url)
         response_code = r.status_code
-        if 400 <= response_code < 600:  # x >=400 and x < 600
+        # if 400 <= response_code < 600:  # x >=400 and x < 600
+        if not (200<= response_code <400):
             print('Status code = ', response_code)
             raise BadResponseCode
         # r = urllib.request.urlopen(url)
