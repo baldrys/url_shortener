@@ -25,9 +25,9 @@ SECRET_KEY = '5*-n2gpm-&gmbl*ut%bf!=l4(%h1)8%m_n=_1^nbx1ry0&3c=)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.short-url.co', 'short-url.co']
+ALLOWED_HOSTS = ['www.short-url420.herokuapp.com', 'short-url420.herokuapp.com']
 
-HOST = "short-url.co"
+HOST = "short-url420.herokuapp.com"
 
 # Application definition
 
