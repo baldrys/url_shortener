@@ -1,6 +1,5 @@
 venv
 *.pyc
-staticfiles
 .env
 
 url_shortener/settings/local.py
