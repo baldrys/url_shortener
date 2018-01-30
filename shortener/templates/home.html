@@ -7,7 +7,7 @@
             <form method="POST" action=".">{% csrf_token %}
 
                 {{ form.as_p }}
-
+                <a href="javascript:void(0)" onclick="toggleShortcode()"><p id="show-more">Click to set desired shortcode</p></a>
             <input class="btn btn-primary" type="submit" value="Shorten">
         </form>
         </div>

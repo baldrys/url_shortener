@@ -11,11 +11,24 @@
     body{
         background-color: #3c283a;
     }
-    .btn-primary{
+    .btn-primary, .btn-default{
         background-color: #212c50;
         border-color: #575582;
     }
 </style>
+<script type="text/javascript">
+function toggleShortcode() {
+    var x = document.getElementById("toggle");
+    var y = document.getElementById("show-more")
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        y.innerHTML = "Click to hide shortcode input"
+    } else {
+        x.style.display = "none";
+        y.innerHTML = "Click to set desired shortcode"
+    }
+}
+</script>
 </head>
 <body>
 

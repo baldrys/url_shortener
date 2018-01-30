@@ -7,10 +7,9 @@
 {% block content %}
 
     <div>
-        <h1>Created</h1>
-        <p>{{ object.url }}</p>
-        <p><a class="btn btn-link" href="{{ object.get_short_url }}">{{ object.get_short_url }}</a></p>
-        <a class="btn btn-default" href="/">+ New</a>
+        <h1>The url have been shortened!</h1>
+        <p>Your short url:<a class="btn btn-link" href="{{ object.get_short_url }}">{{ object.get_short_url }}</a></p>
+        <a class="btn btn-primary" href="/">Shorten another url</a>
     </div>
 
 {% endblock content %}

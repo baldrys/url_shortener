@@ -1,12 +1,12 @@
-from django.core.exceptions import ValidationError
-from requests import exceptions
 import requests
+from django.core.exceptions import ValidationError
 from django.core.validators import URLValidator
-import urllib
-from urllib.error import HTTPError, URLError
-from url_shortener.settings import SHORTCODE_MAX, SHORTCODE_MIN
+from requests import exceptions
+
 # from shortener.models import ShortURL
 import shortener.models
+from url_shortener.settings import SHORTCODE_MAX, SHORTCODE_MIN
+
 
 def validate_url(url):
     if not (url.startswith('http://') or url.startswith('https://')):
@@ -43,9 +43,9 @@ def validate_url(url):
 def validate_desired_shortcode(shortcode):
     # Klass = shortener.models.ShortURL()
     if SHORTCODE_MIN > len(shortcode):
-        raise ValidationError("Desired short url too short")
+        raise ValidationError("At least {0} symbols!".format(SHORTCODE_MIN))
     if len(shortcode) > SHORTCODE_MAX:
-        raise ValidationError("Desired short url too long")
+        raise ValidationError("{0} symbols maximum!".format(SHORTCODE_MAX))
     desired_shortcode = shortener.models.ShortURL.objects.filter(shortcode=shortcode)
     if desired_shortcode.exists():
         raise ValidationError("Desired short url already exists, try another one!")

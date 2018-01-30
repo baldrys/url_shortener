@@ -1,6 +1,7 @@
 from django import forms
+
 from shortener.validators import validate_url, validate_desired_shortcode
-from url_shortener.settings import HOST
+
 
 class SubmitForm(forms.Form):
     url = forms.CharField(
@@ -15,12 +16,15 @@ class SubmitForm(forms.Form):
 
     short_url = forms.CharField(
         required=False,
-        label='{0}'.format(HOST),
-        label_suffix='/+',
+        label='',
+        # label_suffix='/+',
         validators=[validate_desired_shortcode],
         widget=forms.TextInput(attrs={
-            "placeholder": "Desire shortcode (optional)",
-            "class": "form-control form-control-sm"
-            }
-        )
+            "placeholder": "Type the shortcode (host will be added)",
+            "class": "form-control form-control-sm",
+            "id": "toggle",
+            "style": "display: none",
+            },
+        ),
+
     )
