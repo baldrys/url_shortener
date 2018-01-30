@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 
     'shortener',
     'rest_framework',
-    'whitenoise',
+    # 'whitenoise',
 ]
 
 MIDDLEWARE = [
@@ -54,11 +54,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE_CLASSES = [
-  # 'django.middleware.security.SecurityMiddleware',
-  'whitenoise.middleware.WhiteNoiseMiddleware',
-  # ...
-]
+# MIDDLEWARE_CLASSES = [
+#   # 'django.middleware.security.SecurityMiddleware',
+#   'whitenoise.middleware.WhiteNoiseMiddleware',
+#   # ...
+# ]
 
 ROOT_URLCONF = 'url_shortener.urls'
 
@@ -141,7 +141,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SHORTCODE_MIN = 6
 SHORTCODE_MAX = 15
