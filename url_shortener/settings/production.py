@@ -27,7 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['www.short-url420.herokuapp.com', 'short-url420.herokuapp.com']
 
-HOST = "short-url420.herokuapp.com"
+HOST = "http://short-url420.herokuapp.com"
 
 # Application definition
 
