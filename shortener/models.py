@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from shortener.utils import create_shortcode
 from shortener.validators import validate_url
+
 # Пытаемся импортировать из настроек максимальную длину укороченного юрл
 # если не удалось, то используем значение по умолчанию
 SHORTCODE_MAX = getattr(settings, "SHORTCODE_MAX", 15)
