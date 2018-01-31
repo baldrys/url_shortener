@@ -1,10 +1,12 @@
+import django
+django.setup()
+
 from apscheduler.schedulers.blocking import BlockingScheduler
 from shortener.models import ShortURL
 from datetime import datetime, timedelta
 from django.utils import timezone
 # from url_shortener.settings import SHORT_URL_LIFE_TIME
-import django
-django.setup()
+
 
 sched = BlockingScheduler()
 
