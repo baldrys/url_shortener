@@ -2,7 +2,7 @@ venv
 *.pyc
 .env
 
-url_shortener/settings/local.py
+
 .idea
 
 # Byte-compiled / optimized / DLL files
