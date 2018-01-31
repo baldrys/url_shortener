@@ -1,3 +1,5 @@
+import django
+django.setup()
 from shortener.models import ShortURL
 from datetime import datetime, timedelta
 from django.utils import timezone
