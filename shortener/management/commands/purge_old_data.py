@@ -12,5 +12,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         # ShortURL.objects.filter(creation_date__lte=timezone.now() - timedelta(days=SHORT_URL_LIFE_TIME)).delete()
-        ShortURL.objects.filter(creation_date__lte=timezone.now() - timedelta(minutes=5)).delete()
+        ShortURL.objects.filter(creation_date__lte=timezone.now() - timedelta(minutes=1)).delete()
         # self.stdout.write('Deleted objects older than 10 days')
