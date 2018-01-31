@@ -38,7 +38,7 @@ class HomeView(View):
         }
         template = "home.html"
         if form.is_valid():
-            print(form.cleaned_data)
+            # print(form.cleaned_data)
             new_url = form.cleaned_data.get("url")
             shortcode = form.cleaned_data.get("short_url")
             if shortcode != '' and shortcode is not None:

@@ -10420,3 +10420,1048 @@ django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_erro
 (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'qdr6mi7d62d6zxoaxx3xbvamxjhasg1o' AND "django_session"."expire_date" > '2018-01-31 11:21:10.308497'); args=('qdr6mi7d62d6zxoaxx3xbvamxjhasg1o', '2018-01-31 11:21:10.308497')
 (0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
 "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.022) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app" varchar(255) NOT NULL, "name" varchar(255) NOT NULL, "applied" datetime NOT NULL); (params None)
+(0.000) CREATE TABLE "django_migrations" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app" varchar(255) NOT NULL, "name" varchar(255) NOT NULL, "applied" datetime NOT NULL); args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+CREATE TABLE "django_content_type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(100) NOT NULL, "app_label" varchar(100) NOT NULL, "model" varchar(100) NOT NULL); (params None)
+(0.016) CREATE TABLE "django_content_type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(100) NOT NULL, "app_label" varchar(100) NOT NULL, "model" varchar(100) NOT NULL); args=None
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model"); (params ())
+(0.020) CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model"); args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('contenttypes', '0001_initial', '2018-01-31 13:10:12.834085'); args=['contenttypes', '0001_initial', '2018-01-31 13:10:12.834085']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+CREATE TABLE "auth_permission" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(50) NOT NULL, "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id"), "codename" varchar(100) NOT NULL); (params None)
+(0.000) CREATE TABLE "auth_permission" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(50) NOT NULL, "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id"), "codename" varchar(100) NOT NULL); args=None
+CREATE TABLE "auth_group" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(80) NOT NULL UNIQUE); (params None)
+(0.000) CREATE TABLE "auth_group" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(80) NOT NULL UNIQUE); args=None
+CREATE TABLE "auth_group_permissions" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "group_id" integer NOT NULL REFERENCES "auth_group" ("id"), "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id")); (params None)
+(0.000) CREATE TABLE "auth_group_permissions" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "group_id" integer NOT NULL REFERENCES "auth_group" ("id"), "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id")); args=None
+CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NOT NULL, "is_superuser" bool NOT NULL, "username" varchar(30) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(75) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL); (params None)
+(0.000) CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NOT NULL, "is_superuser" bool NOT NULL, "username" varchar(30) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(75) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL); args=None
+CREATE TABLE "auth_user_groups" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NOT NULL REFERENCES "auth_user" ("id"), "group_id" integer NOT NULL REFERENCES "auth_group" ("id")); (params None)
+(0.000) CREATE TABLE "auth_user_groups" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NOT NULL REFERENCES "auth_user" ("id"), "group_id" integer NOT NULL REFERENCES "auth_group" ("id")); args=None
+CREATE TABLE "auth_user_user_permissions" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NOT NULL REFERENCES "auth_user" ("id"), "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id")); (params None)
+(0.000) CREATE TABLE "auth_user_user_permissions" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "user_id" integer NOT NULL REFERENCES "auth_user" ("id"), "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id")); args=None
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename"); (params ())
+(0.000) CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename"); args=()
+CREATE INDEX "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id"); (params ())
+(0.000) CREATE INDEX "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id"); args=()
+CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id"); (params ())
+(0.000) CREATE UNIQUE INDEX "auth_group_permissions_group_id_permission_id_0cd325b0_uniq" ON "auth_group_permissions" ("group_id", "permission_id"); args=()
+CREATE INDEX "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id"); (params ())
+(0.000) CREATE INDEX "auth_group_permissions_group_id_b120cbf9" ON "auth_group_permissions" ("group_id"); args=()
+CREATE INDEX "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id"); (params ())
+(0.000) CREATE INDEX "auth_group_permissions_permission_id_84c5c92e" ON "auth_group_permissions" ("permission_id"); args=()
+CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id"); (params ())
+(0.000) CREATE UNIQUE INDEX "auth_user_groups_user_id_group_id_94350c0c_uniq" ON "auth_user_groups" ("user_id", "group_id"); args=()
+CREATE INDEX "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id"); (params ())
+(0.000) CREATE INDEX "auth_user_groups_user_id_6a12ed8b" ON "auth_user_groups" ("user_id"); args=()
+CREATE INDEX "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id"); (params ())
+(0.000) CREATE INDEX "auth_user_groups_group_id_97559544" ON "auth_user_groups" ("group_id"); args=()
+CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id"); (params ())
+(0.000) CREATE UNIQUE INDEX "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq" ON "auth_user_user_permissions" ("user_id", "permission_id"); args=()
+CREATE INDEX "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id"); (params ())
+(0.000) CREATE INDEX "auth_user_user_permissions_user_id_a95ead1b" ON "auth_user_user_permissions" ("user_id"); args=()
+CREATE INDEX "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id"); (params ())
+(0.000) CREATE INDEX "auth_user_user_permissions_permission_id_1fbb5f2c" ON "auth_user_user_permissions" ("permission_id"); args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0001_initial', '2018-01-31 13:10:13.048323'); args=['auth', '0001_initial', '2018-01-31 13:10:13.048323']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+CREATE TABLE "django_admin_log" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "action_time" datetime NOT NULL, "object_id" text NULL, "object_repr" varchar(200) NOT NULL, "action_flag" smallint unsigned NOT NULL, "change_message" text NOT NULL, "content_type_id" integer NULL REFERENCES "django_content_type" ("id"), "user_id" integer NOT NULL REFERENCES "auth_user" ("id")); (params None)
+(0.000) CREATE TABLE "django_admin_log" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "action_time" datetime NOT NULL, "object_id" text NULL, "object_repr" varchar(200) NOT NULL, "action_flag" smallint unsigned NOT NULL, "change_message" text NOT NULL, "content_type_id" integer NULL REFERENCES "django_content_type" ("id"), "user_id" integer NOT NULL REFERENCES "auth_user" ("id")); args=None
+CREATE INDEX "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id"); (params ())
+(0.000) CREATE INDEX "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id"); args=()
+CREATE INDEX "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id"); (params ())
+(0.000) CREATE INDEX "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id"); args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('admin', '0001_initial', '2018-01-31 13:10:13.248798'); args=['admin', '0001_initial', '2018-01-31 13:10:13.248798']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "django_admin_log" RENAME TO "django_admin_log__old"; (params ())
+(0.016) ALTER TABLE "django_admin_log" RENAME TO "django_admin_log__old"; args=()
+CREATE TABLE "django_admin_log" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "object_id" text NULL, "object_repr" varchar(200) NOT NULL, "action_flag" smallint unsigned NOT NULL, "change_message" text NOT NULL, "content_type_id" integer NULL REFERENCES "django_content_type" ("id"), "user_id" integer NOT NULL REFERENCES "auth_user" ("id"), "action_time" datetime NOT NULL); (params None)
+(0.000) CREATE TABLE "django_admin_log" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "object_id" text NULL, "object_repr" varchar(200) NOT NULL, "action_flag" smallint unsigned NOT NULL, "change_message" text NOT NULL, "content_type_id" integer NULL REFERENCES "django_content_type" ("id"), "user_id" integer NOT NULL REFERENCES "auth_user" ("id"), "action_time" datetime NOT NULL); args=None
+INSERT INTO "django_admin_log" ("id", "object_id", "object_repr", "action_flag", "change_message", "content_type_id", "user_id", "action_time") SELECT "id", "object_id", "object_repr", "action_flag", "change_message", "content_type_id", "user_id", "action_time" FROM "django_admin_log__old"; (params ())
+(0.000) INSERT INTO "django_admin_log" ("id", "object_id", "object_repr", "action_flag", "change_message", "content_type_id", "user_id", "action_time") SELECT "id", "object_id", "object_repr", "action_flag", "change_message", "content_type_id", "user_id", "action_time" FROM "django_admin_log__old"; args=()
+DROP TABLE "django_admin_log__old"; (params ())
+(0.000) DROP TABLE "django_admin_log__old"; args=()
+CREATE INDEX "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id"); (params ())
+(0.000) CREATE INDEX "django_admin_log_content_type_id_c4bce8eb" ON "django_admin_log" ("content_type_id"); args=()
+CREATE INDEX "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id"); (params ())
+(0.000) CREATE INDEX "django_admin_log_user_id_c564eba6" ON "django_admin_log" ("user_id"); args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('admin', '0002_logentry_remove_auto_add', '2018-01-31 13:10:13.433357'); args=['admin', '0002_logentry_remove_auto_add', '2018-01-31 13:10:13.433357']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "django_content_type" RENAME TO "django_content_type__old"; (params ())
+(0.000) ALTER TABLE "django_content_type" RENAME TO "django_content_type__old"; args=()
+CREATE TABLE "django_content_type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app_label" varchar(100) NOT NULL, "model" varchar(100) NOT NULL, "name" varchar(100) NULL); (params None)
+(0.016) CREATE TABLE "django_content_type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app_label" varchar(100) NOT NULL, "model" varchar(100) NOT NULL, "name" varchar(100) NULL); args=None
+INSERT INTO "django_content_type" ("id", "app_label", "model", "name") SELECT "id", "app_label", "model", "name" FROM "django_content_type__old"; (params ())
+(0.000) INSERT INTO "django_content_type" ("id", "app_label", "model", "name") SELECT "id", "app_label", "model", "name" FROM "django_content_type__old"; args=()
+DROP TABLE "django_content_type__old"; (params ())
+(0.000) DROP TABLE "django_content_type__old"; args=()
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model"); (params ())
+(0.000) CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model"); args=()
+ALTER TABLE "django_content_type" RENAME TO "django_content_type__old"; (params ())
+(0.000) ALTER TABLE "django_content_type" RENAME TO "django_content_type__old"; args=()
+CREATE TABLE "django_content_type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app_label" varchar(100) NOT NULL, "model" varchar(100) NOT NULL); (params None)
+(0.000) CREATE TABLE "django_content_type" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "app_label" varchar(100) NOT NULL, "model" varchar(100) NOT NULL); args=None
+INSERT INTO "django_content_type" ("id", "app_label", "model") SELECT "id", "app_label", "model" FROM "django_content_type__old"; (params ())
+(0.000) INSERT INTO "django_content_type" ("id", "app_label", "model") SELECT "id", "app_label", "model" FROM "django_content_type__old"; args=()
+DROP TABLE "django_content_type__old"; (params ())
+(0.000) DROP TABLE "django_content_type__old"; args=()
+CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model"); (params ())
+(0.000) CREATE UNIQUE INDEX "django_content_type_app_label_model_76bd3d3b_uniq" ON "django_content_type" ("app_label", "model"); args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('contenttypes', '0002_remove_content_type_name', '2018-01-31 13:10:13.640712'); args=['contenttypes', '0002_remove_content_type_name', '2018-01-31 13:10:13.640712']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "auth_permission" RENAME TO "auth_permission__old"; (params ())
+(0.000) ALTER TABLE "auth_permission" RENAME TO "auth_permission__old"; args=()
+CREATE TABLE "auth_permission" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id"), "codename" varchar(100) NOT NULL, "name" varchar(255) NOT NULL); (params None)
+(0.000) CREATE TABLE "auth_permission" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "content_type_id" integer NOT NULL REFERENCES "django_content_type" ("id"), "codename" varchar(100) NOT NULL, "name" varchar(255) NOT NULL); args=None
+INSERT INTO "auth_permission" ("id", "content_type_id", "codename", "name") SELECT "id", "content_type_id", "codename", "name" FROM "auth_permission__old"; (params ())
+(0.000) INSERT INTO "auth_permission" ("id", "content_type_id", "codename", "name") SELECT "id", "content_type_id", "codename", "name" FROM "auth_permission__old"; args=()
+DROP TABLE "auth_permission__old"; (params ())
+(0.000) DROP TABLE "auth_permission__old"; args=()
+CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename"); (params ())
+(0.000) CREATE UNIQUE INDEX "auth_permission_content_type_id_codename_01ab375a_uniq" ON "auth_permission" ("content_type_id", "codename"); args=()
+CREATE INDEX "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id"); (params ())
+(0.000) CREATE INDEX "auth_permission_content_type_id_2f476e4b" ON "auth_permission" ("content_type_id"); args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0002_alter_permission_name_max_length', '2018-01-31 13:10:13.802382'); args=['auth', '0002_alter_permission_name_max_length', '2018-01-31 13:10:13.802382']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "auth_user" RENAME TO "auth_user__old"; (params ())
+(0.000) ALTER TABLE "auth_user" RENAME TO "auth_user__old"; args=()
+CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NOT NULL, "is_superuser" bool NOT NULL, "username" varchar(30) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "email" varchar(254) NOT NULL); (params None)
+(0.000) CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NOT NULL, "is_superuser" bool NOT NULL, "username" varchar(30) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "email" varchar(254) NOT NULL); args=None
+INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "username", "first_name", "last_name", "is_staff", "is_active", "date_joined", "email") SELECT "id", "password", "last_login", "is_superuser", "username", "first_name", "last_name", "is_staff", "is_active", "date_joined", "email" FROM "auth_user__old"; (params ())
+(0.000) INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "username", "first_name", "last_name", "is_staff", "is_active", "date_joined", "email") SELECT "id", "password", "last_login", "is_superuser", "username", "first_name", "last_name", "is_staff", "is_active", "date_joined", "email" FROM "auth_user__old"; args=()
+DROP TABLE "auth_user__old"; (params ())
+(0.000) DROP TABLE "auth_user__old"; args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0003_alter_user_email_max_length', '2018-01-31 13:10:14.003237'); args=['auth', '0003_alter_user_email_max_length', '2018-01-31 13:10:14.003237']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "auth_user" RENAME TO "auth_user__old"; (params ())
+(0.016) ALTER TABLE "auth_user" RENAME TO "auth_user__old"; args=()
+CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NOT NULL, "is_superuser" bool NOT NULL, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "username" varchar(30) NOT NULL UNIQUE); (params None)
+(0.000) CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NOT NULL, "is_superuser" bool NOT NULL, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "username" varchar(30) NOT NULL UNIQUE); args=None
+INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username") SELECT "id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username" FROM "auth_user__old"; (params ())
+(0.000) INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username") SELECT "id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username" FROM "auth_user__old"; args=()
+DROP TABLE "auth_user__old"; (params ())
+(0.000) DROP TABLE "auth_user__old"; args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0004_alter_user_username_opts', '2018-01-31 13:10:14.202927'); args=['auth', '0004_alter_user_username_opts', '2018-01-31 13:10:14.202927']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "auth_user" RENAME TO "auth_user__old"; (params ())
+(0.000) ALTER TABLE "auth_user" RENAME TO "auth_user__old"; args=()
+CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "is_superuser" bool NOT NULL, "username" varchar(30) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "last_login" datetime NULL); (params None)
+(0.000) CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "is_superuser" bool NOT NULL, "username" varchar(30) NOT NULL UNIQUE, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "last_login" datetime NULL); args=None
+INSERT INTO "auth_user" ("id", "password", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "last_login") SELECT "id", "password", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "last_login" FROM "auth_user__old"; (params ())
+(0.000) INSERT INTO "auth_user" ("id", "password", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "last_login") SELECT "id", "password", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "last_login" FROM "auth_user__old"; args=()
+DROP TABLE "auth_user__old"; (params ())
+(0.000) DROP TABLE "auth_user__old"; args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.002) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0005_alter_user_last_login_null', '2018-01-31 13:10:14.385355'); args=['auth', '0005_alter_user_last_login_null', '2018-01-31 13:10:14.385355']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0006_require_contenttypes_0002', '2018-01-31 13:10:14.487925'); args=['auth', '0006_require_contenttypes_0002', '2018-01-31 13:10:14.487925']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "auth_user" RENAME TO "auth_user__old"; (params ())
+(0.000) ALTER TABLE "auth_user" RENAME TO "auth_user__old"; args=()
+CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NULL, "is_superuser" bool NOT NULL, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "username" varchar(30) NOT NULL UNIQUE); (params None)
+(0.000) CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NULL, "is_superuser" bool NOT NULL, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "username" varchar(30) NOT NULL UNIQUE); args=None
+INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username") SELECT "id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username" FROM "auth_user__old"; (params ())
+(0.000) INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username") SELECT "id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username" FROM "auth_user__old"; args=()
+DROP TABLE "auth_user__old"; (params ())
+(0.000) DROP TABLE "auth_user__old"; args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.003) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0007_alter_validators_add_error_messages', '2018-01-31 13:10:14.675507'); args=['auth', '0007_alter_validators_add_error_messages', '2018-01-31 13:10:14.675507']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "auth_user" RENAME TO "auth_user__old"; (params ())
+(0.002) ALTER TABLE "auth_user" RENAME TO "auth_user__old"; args=()
+CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NULL, "is_superuser" bool NOT NULL, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "username" varchar(150) NOT NULL UNIQUE); (params None)
+(0.001) CREATE TABLE "auth_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "password" varchar(128) NOT NULL, "last_login" datetime NULL, "is_superuser" bool NOT NULL, "first_name" varchar(30) NOT NULL, "last_name" varchar(30) NOT NULL, "email" varchar(254) NOT NULL, "is_staff" bool NOT NULL, "is_active" bool NOT NULL, "date_joined" datetime NOT NULL, "username" varchar(150) NOT NULL UNIQUE); args=None
+INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username") SELECT "id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username" FROM "auth_user__old"; (params ())
+(0.000) INSERT INTO "auth_user" ("id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username") SELECT "id", "password", "last_login", "is_superuser", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined", "username" FROM "auth_user__old"; args=()
+DROP TABLE "auth_user__old"; (params ())
+(0.000) DROP TABLE "auth_user__old"; args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.016) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('auth', '0008_alter_user_username_max_length', '2018-01-31 13:10:14.851047'); args=['auth', '0008_alter_user_username_max_length', '2018-01-31 13:10:14.851047']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+CREATE TABLE "django_session" ("session_key" varchar(40) NOT NULL PRIMARY KEY, "session_data" text NOT NULL, "expire_date" datetime NOT NULL); (params None)
+(0.000) CREATE TABLE "django_session" ("session_key" varchar(40) NOT NULL PRIMARY KEY, "session_data" text NOT NULL, "expire_date" datetime NOT NULL); args=None
+CREATE INDEX "django_session_expire_date_a5c62663" ON "django_session" ("expire_date"); (params ())
+(0.000) CREATE INDEX "django_session_expire_date_a5c62663" ON "django_session" ("expire_date"); args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('sessions', '0001_initial', '2018-01-31 13:10:15.020375'); args=['sessions', '0001_initial', '2018-01-31 13:10:15.020375']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+CREATE TABLE "shortener_shorturl" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "url" varchar(220) NOT NULL, "shortcode" varchar(15) NOT NULL UNIQUE, "creation_date" datetime NOT NULL, "clicked_times" integer NOT NULL); (params None)
+(0.000) CREATE TABLE "shortener_shorturl" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "url" varchar(220) NOT NULL, "shortcode" varchar(15) NOT NULL UNIQUE, "creation_date" datetime NOT NULL, "clicked_times" integer NOT NULL); args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('shortener', '0001_initial', '2018-01-31 13:10:15.205339'); args=['shortener', '0001_initial', '2018-01-31 13:10:15.205339']
+(0.000) PRAGMA foreign_keys; args=None
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.000) BEGIN; args=None
+ALTER TABLE "shortener_shorturl" RENAME TO "shortener_shorturl__old"; (params ())
+(0.016) ALTER TABLE "shortener_shorturl" RENAME TO "shortener_shorturl__old"; args=()
+CREATE TABLE "shortener_shorturl" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "shortcode" varchar(15) NOT NULL UNIQUE, "creation_date" datetime NOT NULL, "clicked_times" integer NOT NULL, "url" varchar(220) NOT NULL); (params None)
+(0.000) CREATE TABLE "shortener_shorturl" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "shortcode" varchar(15) NOT NULL UNIQUE, "creation_date" datetime NOT NULL, "clicked_times" integer NOT NULL, "url" varchar(220) NOT NULL); args=None
+INSERT INTO "shortener_shorturl" ("id", "shortcode", "creation_date", "clicked_times", "url") SELECT "id", "shortcode", "creation_date", "clicked_times", "url" FROM "shortener_shorturl__old"; (params ())
+(0.000) INSERT INTO "shortener_shorturl" ("id", "shortcode", "creation_date", "clicked_times", "url") SELECT "id", "shortcode", "creation_date", "clicked_times", "url" FROM "shortener_shorturl__old"; args=()
+DROP TABLE "shortener_shorturl__old"; (params ())
+(0.000) DROP TABLE "shortener_shorturl__old"; args=()
+(0.000) PRAGMA foreign_keys = 0; args=None
+(0.001) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) BEGIN; args=None
+(0.002) INSERT INTO "django_migrations" ("app", "name", "applied") VALUES ('shortener', '0002_auto_20180127_1954', '2018-01-31 13:10:15.387255'); args=['shortener', '0002_auto_20180127_1954', '2018-01-31 13:10:15.387255']
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.016) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'admin' AND "django_content_type"."model" = 'logentry'); args=('admin', 'logentry')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'admin' AND "django_content_type"."model" = 'logentry'); args=('admin', 'logentry')
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('admin', 'logentry'); args=['admin', 'logentry']
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1,)
+(0.000) BEGIN; args=None
+(0.016) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add log entry', 1, 'add_logentry' UNION ALL SELECT 'Can change log entry', 1, 'change_logentry' UNION ALL SELECT 'Can delete log entry', 1, 'delete_logentry'; args=('Can add log entry', 1, 'add_logentry', 'Can change log entry', 1, 'change_logentry', 'Can delete log entry', 1, 'delete_logentry')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'; args=('admin',)
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'permission'); args=('auth', 'permission')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'permission'); args=('auth', 'permission')
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('auth', 'permission'); args=['auth', 'permission']
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'group'); args=('auth', 'group')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'group'); args=('auth', 'group')
+(0.000) BEGIN; args=None
+(0.016) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('auth', 'group'); args=['auth', 'group']
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'user'); args=('auth', 'user')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'auth' AND "django_content_type"."model" = 'user'); args=('auth', 'user')
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('auth', 'user'); args=['auth', 'user']
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (2, 3, 4) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(2, 3, 4)
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add permission', 2, 'add_permission' UNION ALL SELECT 'Can change permission', 2, 'change_permission' UNION ALL SELECT 'Can delete permission', 2, 'delete_permission' UNION ALL SELECT 'Can add group', 3, 'add_group' UNION ALL SELECT 'Can change group', 3, 'change_group' UNION ALL SELECT 'Can delete group', 3, 'delete_group' UNION ALL SELECT 'Can add user', 4, 'add_user' UNION ALL SELECT 'Can change user', 4, 'change_user' UNION ALL SELECT 'Can delete user', 4, 'delete_user'; args=('Can add permission', 2, 'add_permission', 'Can change permission', 2, 'change_permission', 'Can delete permission', 2, 'delete_permission', 'Can add group', 3, 'add_group', 'Can change group', 3, 'change_group', 'Can delete group', 3, 'delete_group', 'Can add user', 4, 'add_user', 'Can change user', 4, 'change_user', 'Can delete user', 4, 'delete_user')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'; args=('auth',)
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'contenttypes' AND "django_content_type"."model" = 'contenttype'); args=('contenttypes', 'contenttype')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'contenttypes' AND "django_content_type"."model" = 'contenttype'); args=('contenttypes', 'contenttype')
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('contenttypes', 'contenttype'); args=['contenttypes', 'contenttype']
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (5) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(5,)
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add content type', 5, 'add_contenttype' UNION ALL SELECT 'Can change content type', 5, 'change_contenttype' UNION ALL SELECT 'Can delete content type', 5, 'delete_contenttype'; args=('Can add content type', 5, 'add_contenttype', 'Can change content type', 5, 'change_contenttype', 'Can delete content type', 5, 'delete_contenttype')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'; args=('contenttypes',)
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'sessions' AND "django_content_type"."model" = 'session'); args=('sessions', 'session')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'sessions' AND "django_content_type"."model" = 'session'); args=('sessions', 'session')
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('sessions', 'session'); args=['sessions', 'session']
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (6) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(6,)
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add session', 6, 'add_session' UNION ALL SELECT 'Can change session', 6, 'change_session' UNION ALL SELECT 'Can delete session', 6, 'delete_session'; args=('Can add session', 6, 'add_session', 'Can change session', 6, 'change_session', 'Can delete session', 6, 'delete_session')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'; args=('sessions',)
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'shortener' AND "django_content_type"."model" = 'shorturl'); args=('shortener', 'shorturl')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."app_label" = 'shortener' AND "django_content_type"."model" = 'shorturl'); args=('shortener', 'shorturl')
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "django_content_type" ("app_label", "model") VALUES ('shortener', 'shorturl'); args=['shortener', 'shorturl']
+(0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (7) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(7,)
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") SELECT 'Can add short url', 7, 'add_shorturl' UNION ALL SELECT 'Can change short url', 7, 'change_shorturl' UNION ALL SELECT 'Can delete short url', 7, 'delete_shorturl'; args=('Can add short url', 7, 'add_shorturl', 'Can change short url', 7, 'change_shorturl', 'Can delete short url', 7, 'delete_shorturl')
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'shortener'; args=('shortener',)
+(0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'rest_framework'; args=('rest_framework',)
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+"GET / HTTP/1.1" 200 2091
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'qdr6mi7d62d6zxoaxx3xbvamxjhasg1o' AND "django_session"."expire_date" > '2018-01-31 13:13:19.210292'); args=('qdr6mi7d62d6zxoaxx3xbvamxjhasg1o', '2018-01-31 13:13:19.210292')
+"GET /admin/ HTTP/1.1" 302 0
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x080C8270>>, 'request': <WSGIRequest: GET '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0807A8F0>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x080D5BB0>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x08065510>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=False, valid=Unknown, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x080C48F0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x080C4B10>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x080C8270>>, 'request': <WSGIRequest: GET '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0807A8F0>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x080D5BB0>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x08065510>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=False, valid=Unknown, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x080C48F0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x080C4B10>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 1650
+"GET /static/admin/css/base.css HTTP/1.1" 304 0
+"GET /static/admin/css/login.css HTTP/1.1" 200 1203
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'eban'; args=('eban',)
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin'; args=('admin',)
+(0.000) BEGIN; args=None
+(0.000) INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") VALUES ('pbkdf2_sha256$36000$2g4wI1SAmBtn$7mYifGTnRFVcbEgUSZYItMmYmJnO7DZTLm4hEd2Bups=', NULL, 1, 'admin', '', '', '', 1, 1, '2018-01-31 13:13:47.398774'); args=['pbkdf2_sha256$36000$2g4wI1SAmBtn$7mYifGTnRFVcbEgUSZYItMmYmJnO7DZTLm4hEd2Bups=', None, True, 'admin', '', '', '', True, True, '2018-01-31 13:13:47.398774']
+(0.000) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+(0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+"GET /admin/ HTTP/1.1" 302 0
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x07B26DB0>>, 'request': <WSGIRequest: GET '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x07B53490>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x07050230>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x06D9A970>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=False, valid=Unknown, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x07B534D0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x07B53730>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x07B26DB0>>, 'request': <WSGIRequest: GET '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x07B53490>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x07050230>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x06D9A970>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=False, valid=Unknown, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x07B534D0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x07B53730>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 1650
+"GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+"GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+"GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin'; args=('admin',)
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin'; args=('admin',)
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070A5C90>>, 'request': <WSGIRequest: POST '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0695D270>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x07066BB0>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x070495F0>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=True, valid=False, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x070494D0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x06269E30>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070A5C90>>, 'request': <WSGIRequest: POST '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x0695D270>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x07066BB0>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x070495F0>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=True, valid=False, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x070494D0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x06269E30>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 1811
+"GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 304 0
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin'; args=('admin',)
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin'; args=('admin',)
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070C6150>>, 'request': <WSGIRequest: POST '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x07066830>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x07066170>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x07066370>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=True, valid=False, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x070667F0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x07066A30>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+Exception while resolving variable 'is_popup' in template 'admin/login.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070C6150>>, 'request': <WSGIRequest: POST '/admin/login/?next=/admin/'>, 'user': <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x07066830>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x07066170>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x07066370>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'form': <AdminAuthenticationForm bound=True, valid=False, fields=(username;password)>, 'view': <django.contrib.auth.views.LoginView object at 0x070667F0>, 'next': '/admin/', 'site': <django.contrib.sites.requests.RequestSite object at 0x07066A30>, 'site_name': '127.0.0.1:8000', 'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': False, 'available_apps': [], 'title': 'Log in', 'app_path': '/admin/login/?next=/admin/', 'username': '', 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+"POST /admin/login/?next=/admin/ HTTP/1.1" 200 1811
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin'; args=('admin',)
+(0.000) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' LIMIT 1; args=('f67r20wt4fdpyu9qnf3fq285gydbsed2',)
+(0.000) BEGIN; args=None
+(0.018) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") SELECT 'f67r20wt4fdpyu9qnf3fq285gydbsed2', 'ZWU4ZjAxMzhhYjA3MDhkNjYwMTE4ZTU0YjEwMGY5NTI0Y2Y2M2E3Nzp7fQ==', '2018-02-14 13:14:15.409671'; args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', 'ZWU4ZjAxMzhhYjA3MDhkNjYwMTE4ZTU0YjEwMGY5NTI0Y2Y2M2E3Nzp7fQ==', '2018-02-14 13:14:15.409671')
+(0.000) BEGIN; args=None
+(0.002) UPDATE "auth_user" SET "last_login" = '2018-01-31 13:14:15.537979' WHERE "auth_user"."id" = 1; args=('2018-01-31 13:14:15.537979', 1)
+(0.000) BEGIN; args=None
+(0.001) UPDATE "django_session" SET "session_data" = 'MTNkNTY5ZjY0NzM5MWNmZjRiZmI3YWQwMzA0NWQ5NThjM2Y1MzUxOTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3OWU5ZjNkZmViY2UyYWY5MmFjMjNhYzcwNmU1OGUyNWRiMTc0ODNhIn0=', "expire_date" = '2018-02-14 13:14:15.608027' WHERE "django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2'; args=('MTNkNTY5ZjY0NzM5MWNmZjRiZmI3YWQwMzA0NWQ5NThjM2Y1MzUxOTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiI3OWU5ZjNkZmViY2UyYWY5MmFjMjNhYzcwNmU1OGUyNWRiMTc0ODNhIn0=', '2018-02-14 13:14:15.608027', 'f67r20wt4fdpyu9qnf3fq285gydbsed2')
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' AND "django_session"."expire_date" > '2018-01-31 13:14:15.684773'); args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', '2018-01-31 13:14:15.684773')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070C6468>>, 'request': <WSGIRequest: GET '/admin/'>, 'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x070492D0>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x07041370>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': True, 'available_apps': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'title': 'Site administration', 'app_list': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070C6468>>, 'request': <WSGIRequest: GET '/admin/'>, 'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x070492D0>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x07041370>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': True, 'available_apps': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'title': 'Site administration', 'app_list': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+(0.000) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 1 ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(1,)
+"GET /admin/ HTTP/1.1" 200 3453
+"GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' AND "django_session"."expire_date" > '2018-01-31 13:14:19.010542'); args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', '2018-01-31 13:14:19.010542')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+(0.000) SELECT COUNT(*) AS "__count" FROM "shortener_shorturl"; args=()
+(0.000) SELECT COUNT(*) AS "__count" FROM "shortener_shorturl"; args=()
+(0.000) SELECT "shortener_shorturl"."id", "shortener_shorturl"."url", "shortener_shorturl"."shortcode", "shortener_shorturl"."creation_date", "shortener_shorturl"."clicked_times" FROM "shortener_shorturl" ORDER BY "shortener_shorturl"."id" DESC; args=()
+Exception while resolving variable 'errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [errors] in 'None'
+Exception while resolving variable 'show' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [show] in "[{'True': True, 'False': False, 'None': None, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070C65D0>>}]"
+Exception while resolving variable 'is_multipart' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_multipart] in 'None'
+"GET /admin/shortener/shorturl/ HTTP/1.1" 200 3071
+(0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' AND "django_session"."expire_date" > '2018-01-31 13:14:19.096098'); args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', '2018-01-31 13:14:19.096098')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+"GET /static/admin/js/core.js HTTP/1.1" 304 0
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+"GET /static/admin/js/actions.js HTTP/1.1" 304 0
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189
+"GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+"GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 2091
+(0.000) SELECT (1) AS "a" FROM "shortener_shorturl" WHERE "shortener_shorturl"."shortcode" = '5CVBtB' LIMIT 1; args=('5CVBtB',)
+Created ShortURL record with URL:google.com and shortcode:5CVBtB!
+(0.000) BEGIN; args=None
+(0.001) INSERT INTO "shortener_shorturl" ("url", "shortcode", "creation_date", "clicked_times") VALUES ('google.com', '5CVBtB', '2018-01-31 13:14:49.329778', 0); args=['google.com', '5CVBtB', '2018-01-31 13:14:49.329778', 0]
+"POST / HTTP/1.1" 200 1523
+(0.001) SELECT "shortener_shorturl"."id", "shortener_shorturl"."url", "shortener_shorturl"."shortcode", "shortener_shorturl"."creation_date", "shortener_shorturl"."clicked_times" FROM "shortener_shorturl" WHERE "shortener_shorturl"."shortcode" = '5CVBtB'; args=('5CVBtB',)
+Created ShortURL record with URL:google.com and shortcode:5CVBtB!
+(0.001) BEGIN; args=None
+(0.002) UPDATE "shortener_shorturl" SET "url" = 'google.com', "shortcode" = '5CVBtB', "creation_date" = '2018-01-31 13:14:49.329778', "clicked_times" = 1 WHERE "shortener_shorturl"."id" = 1; args=('google.com', '5CVBtB', '2018-01-31 13:14:49.329778', 1, 1)
+"GET /5CVBtB/ HTTP/1.1" 302 0
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' AND "django_session"."expire_date" > '2018-01-31 13:15:24.819880'); args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', '2018-01-31 13:15:24.819880')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x06E38198>>, 'request': <WSGIRequest: GET '/admin/'>, 'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x070DA990>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x070D3D30>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': True, 'available_apps': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'title': 'Site administration', 'app_list': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x06E38198>>, 'request': <WSGIRequest: GET '/admin/'>, 'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x070DA990>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x070D3D30>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': True, 'available_apps': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'title': 'Site administration', 'app_list': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+(0.000) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 1 ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(1,)
+"GET /admin/ HTTP/1.1" 200 3453
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' AND "django_session"."expire_date" > '2018-01-31 13:15:25.226469'); args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', '2018-01-31 13:15:25.226469')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x07B26DB0>>, 'request': <WSGIRequest: GET '/admin/'>, 'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x070D3E50>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x06E1CE70>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': True, 'available_apps': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'title': 'Site administration', 'app_list': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+Exception while resolving variable 'is_popup' in template 'admin/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_popup'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_popup] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x07B26DB0>>, 'request': <WSGIRequest: GET '/admin/'>, 'user': <SimpleLazyObject: <User: admin>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x070D3E50>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x06E1CE70>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'site_title': 'Django site admin', 'site_header': 'Django administration', 'site_url': '/', 'has_permission': True, 'available_apps': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'title': 'Site administration', 'app_list': [{'name': 'Authentication and Authorization', 'app_label': 'auth', 'app_url': '/admin/auth/', 'has_module_perms': True, 'models': [{'name': 'Groups', 'object_name': 'Group', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/group/', 'add_url': '/admin/auth/group/add/'}, {'name': 'Users', 'object_name': 'User', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/auth/user/', 'add_url': '/admin/auth/user/add/'}]}, {'name': 'Shortener', 'app_label': 'shortener', 'app_url': '/admin/shortener/', 'has_module_perms': True, 'models': [{'name': 'Short urls', 'object_name': 'ShortURL', 'perms': {'add': True, 'change': True, 'delete': True}, 'admin_url': '/admin/shortener/shorturl/', 'add_url': '/admin/shortener/shorturl/add/'}]}], 'LANGUAGE_CODE': 'en-us', 'LANGUAGE_BIDI': False}]"
+(0.000) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 1 ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(1,)
+"GET /admin/ HTTP/1.1" 200 3453
+(0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' AND "django_session"."expire_date" > '2018-01-31 13:15:26.587064'); args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', '2018-01-31 13:15:26.587064')
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+(0.000) SELECT COUNT(*) AS "__count" FROM "shortener_shorturl"; args=()
+(0.000) SELECT COUNT(*) AS "__count" FROM "shortener_shorturl"; args=()
+(0.001) SELECT "shortener_shorturl"."id", "shortener_shorturl"."url", "shortener_shorturl"."shortcode", "shortener_shorturl"."creation_date", "shortener_shorturl"."clicked_times" FROM "shortener_shorturl" ORDER BY "shortener_shorturl"."id" DESC; args=()
+Exception while resolving variable 'errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [errors] in 'None'
+Exception while resolving variable 'show' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'show'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [show] in "[{'True': True, 'False': False, 'None': None, 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x070C67C8>>}]"
+Exception while resolving variable 'is_multipart' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'is_multipart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [is_multipart] in 'None'
+Exception while resolving variable 'non_field_errors' in template 'admin/change_list.html'.
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'NoneType' object has no attribute 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'non_field_errors'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\eban\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [non_field_errors] in 'None'
+"GET /admin/shortener/shorturl/ HTTP/1.1" 200 4226
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'f67r20wt4fdpyu9qnf3fq285gydbsed2' AND "django_session"."expire_date" > '2018-01-31 13:15:26.674121'); args=('f67r20wt4fdpyu9qnf3fq285gydbsed2', '2018-01-31 13:15:26.674121')
+(0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+"GET /admin/jsi18n/ HTTP/1.1" 200 3189

@@ -11,7 +11,7 @@ from url_shortener.settings import SHORTCODE_MAX, SHORTCODE_MIN
 def validate_url(url):
     if not (url.startswith('http://') or url.startswith('https://')):
         url = 'http://' + url
-    print(url)
+    # print(url)
     url_validator = URLValidator()
 
     try:
@@ -20,7 +20,7 @@ def validate_url(url):
         response_code = r.status_code
         # if 400 <= response_code < 600:  # x >=400 and x < 600
         if not (200<= response_code <400):
-            print('Status code = ', response_code)
+            # print('Status code = ', response_code)
             raise BadResponseCode
         # r = urllib.request.urlopen(url)
 
