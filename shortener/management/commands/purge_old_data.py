@@ -1,5 +1,6 @@
 # purge_old_data.py
-
+import django
+django.setup()
 from django.core.management.base import BaseCommand, CommandError
 from shortener.models import ShortURL
 from datetime import datetime, timedelta
