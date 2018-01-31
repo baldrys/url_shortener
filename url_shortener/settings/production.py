@@ -154,6 +154,7 @@ SHORTCODE_MAX = 15
 # DAYS
 SHORT_URL_LIFE_TIME = 15
 
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

@@ -4,6 +4,7 @@ from django.contrib import admin
 from .models import ShortURL
 
 
+
 class ShortURLAdmin(admin.ModelAdmin):
     # fields = ('url', 'shortcode', )
     readonly_fields = ('creation_date', 'clicked_times', )

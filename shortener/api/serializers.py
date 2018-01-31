@@ -7,3 +7,4 @@ class ShortURLSerializer(serializers.ModelSerializer):
         model = ShortURL
         fields = ('pk', 'url', 'shortcode', 'clicked_times', 'creation_date')
         read_only_fields = ('pk', 'clicked_times', 'creation_date')
+

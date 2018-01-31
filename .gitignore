@@ -57,6 +57,7 @@ coverage.xml
 *.mo
 *.pot
 
+
 # Django stuff:
 .static_storage/
 .media/

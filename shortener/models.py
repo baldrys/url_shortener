@@ -26,6 +26,7 @@ class ShortURL(models.Model):
         return "{0} - {1}".format(self.url, self.shortcode)
         #return str(self.url)
 
+
     def __unicode__(self):
         return str(self.url)
 

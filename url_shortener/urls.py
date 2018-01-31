@@ -26,3 +26,4 @@ urlpatterns = [
     url(r'^api/', include('shortener.api.urls')),
 ]
 
+
