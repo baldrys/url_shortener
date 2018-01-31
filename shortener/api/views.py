@@ -8,4 +8,3 @@ class DetailsShortURLView(generics.RetrieveUpdateDestroyAPIView):
 
 class CreateShorturlView(generics.CreateAPIView):
     serializer_class = ShortURLSerializer
-    

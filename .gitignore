@@ -61,7 +61,6 @@ coverage.xml
 # Django stuff:
 .static_storage/
 .media/
-local_settings.py
 
 # Flask stuff:
 instance/
